@@ -6,22 +6,22 @@ import { printValue, LocaleObject } from 'yup';
 export const mixed: LocaleObject['mixed'] = {
   default: '${path} er ógilt.',
   required: '${path} er nauðsynlegur reitur',
-  defined: '${path} verður að skilgreina',
-  notNull: '${path} er ekki hægt að ógilda',
+  defined: '${path} verður að vera skilgreindur',
+  notNull: '${path} verður ekki að vera null',
   oneOf: '${path} verður að vera eitt af eftirfarandi gildum: ${values}',
   notOneOf: '${path} má ekki vera eitt af eftirfarandi gildum: ${values}',
   notType: ({ path, type, value, originalValue }) => {
     const isCast = originalValue != null && originalValue !== value;
     let msg =
       `${path} verður að vera \`${type}\` gerð, ` +
-      `En lokagildið var: \`${printValue(value, true)}\`` +
+      `en lokagildið var: \`${printValue(value, true)}\`` +
       (isCast
         ? ` (varpað úr gildinu \`${printValue(originalValue, true)}\`).`
         : '.');
 
     if (value === null) {
       msg +=
-        `\n Ef „null“ er ætlað sem tómt gildi vertu viss um að merkja stefið sem` +
+        `\nEf „null“ er ætlað sem tómt gildi, vertu viss um að merkja reitinn sem` +
         ' `.nullable()`';
     }
 
@@ -30,16 +30,16 @@ export const mixed: LocaleObject['mixed'] = {
 };
 
 export const string: LocaleObject['string'] = {
-  length: '${path} verður að vera nákvæmlega ${length} persónur',
-  min: '${path} verður að vera að minnsta kosti ${min} persónur',
-  max: '${path} verður að vera í mesta lagi ${max} persónur',
+  length: '${path} verður að vera nákvæmlega ${length} stafir',
+  min: '${path} verður að vera að minnsta kosti ${min} stafir',
+  max: '${path} verður að vera í mesta lagi ${max} stafir',
   matches: '${path} verður að passa eftirfarandi: "${regex}"',
   email: '${path} verður að vera gildur tölvupóstur',
-  url: '${path} verður að vera gild url',
+  url: '${path} verður að vera gilt URL',
   uuid: '${path} verður að vera gilt UUID',
-  trim: '${path} verður að vera snyrtur strengur',
-  lowercase: '${path} verður að vera lágstafi strengur',
-  uppercase: '${path} verður að vera efri tilfelli strengur',
+  trim: '${path} verður að vera skornur strengur',
+  lowercase: '${path} verður að vera lágstafa strengur',
+  uppercase: '${path} verður að vera stórstafa strengur',
 };
 
 export const number: LocaleObject['number'] = {
@@ -47,7 +47,7 @@ export const number: LocaleObject['number'] = {
   max: '${path} verður að vera minna en eða jafnt ${max}',
   lessThan: '${path} verður að vera minna en ${less}',
   moreThan: '${path} verður að vera meiri en ${more}',
-  positive: '${path} verður að vera jákvæður fjöldi',
+  positive: '${path} verður að vera jákvæð tala',
   negative: '${path} verður að vera neikvæð tala',
   integer: '${path} verður að vera heiltala',
 };
@@ -63,7 +63,7 @@ export const boolean: LocaleObject['boolean'] = {
 
 export const object: LocaleObject['object'] = {
   noUnknown:
-    '${path} Reitur getur ekki haft lykla sem ekki eru tilgreindir í hlutnum',
+    '${path} reitur getur ekki haft lykla sem ekki eru tilgreindir í hlutnum',
 };
 
 export const array: LocaleObject['array'] = {
